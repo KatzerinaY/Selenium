@@ -5,11 +5,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
+
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.support.ui.WebDriverWait;
-
-import java.time.Duration;
 
 import static org.openqa.selenium.support.ui.ExpectedConditions.titleIs;
 
@@ -27,11 +27,14 @@ public class FirstTestOpenBrowser {
     @Test
     public void myFirstTest() {
 
-        driver.navigate().to("https://dict.leo.org/russisch-deutsch/");
-        driver.findElement(By.name("search")).sendKeys("webdriver");
- //       driver.findElement(By.id("searchFieldSubmit")).click();
- //       wait.until(titleIs("webdriver - search in Google"));
+      // driver.navigate().to("https://dict.leo.org/russisch-deutsch/");
+      // driver.findElement(By.name("search")).sendKeys("webdriver");
 
+        driver.navigate().to("https://www.bing.com");
+        driver.findElement(By.name("q")).sendKeys("webdriver");
+        driver.findElement(By.name("q")).sendKeys(Keys.ENTER);
+
+        wait.until(titleIs("webdriver - Bing"));
     }
     @After
 
