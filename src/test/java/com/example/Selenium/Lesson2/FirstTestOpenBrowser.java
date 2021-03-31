@@ -28,10 +28,10 @@ public class FirstTestOpenBrowser {
     public void myFirstTest() {
 
         driver.navigate().to("https://dict.leo.org/russisch-deutsch/");
-//        driver.findElement(By.name("q")).sendKeys("webdriver");
-//        driver.findElement(By.name("btnG")).click();
-//        wait.until(titleIs("webdriver - search in Google"));
-//        driver.get("http://www.google.com");
+        driver.findElement(By.name("search")).sendKeys("webdriver");
+ //       driver.findElement(By.id("searchFieldSubmit")).click();
+ //       wait.until(titleIs("webdriver - search in Google"));
+
     }
     @After
 
