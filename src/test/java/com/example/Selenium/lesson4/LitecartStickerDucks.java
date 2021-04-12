@@ -33,11 +33,13 @@ public class LitecartStickerDucks {
         driver.get("http://localhost/litecart");
         wait.until(titleIs("Online Store | My Store"));
 
-        List<WebElement> ducksList = driver.findElements(By.xpath("//li[@class ='product column shadow hover-light']"));
+        List<WebElement> ducksList = driver.findElements(By.className("product"));
+//        System.out.println(" Amount ducks : " + ducksList.size());
 
         for (WebElement item : ducksList) {
-            List<WebElement> stickers = item.findElements(By.xpath(".//div[starts-with(@class, 'sticker')]"));
-                Assert.assertEquals("Invalid amount of stickers: ", 1, stickers.size());
+//            System.out.println(item.getAttribute("class"));
+            List<WebElement> stickers = item.findElements(By.cssSelector("[class^=sticker]"));
+            Assert.assertEquals("Invalid amount of stickers: ", 1, stickers.size());
         }
 
 
