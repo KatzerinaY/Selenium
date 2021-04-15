@@ -25,9 +25,9 @@ public class CheckingProductCorrect {
     @Before
     public void start() {
 
-       driver = new FirefoxDriver();
+//        driver = new FirefoxDriver();
 
-//        driver = new ChromeDriver();
+       driver = new ChromeDriver();
 
 //        System.setProperty("webdriver.edge.driver", "C:\\Java\\Tools\\msedgedriver.exe");
 //        driver = new EdgeDriver();
