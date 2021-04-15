@@ -39,14 +39,12 @@ public class CheckingProductCorrect {
     @Test
     public void CheckingProductPage() {
 
-        List<Product> products = new ArrayList<>();
-
         driver.get("http://localhost/litecart");
         wait.until(titleIs("Online Store | My Store"));
 
         WebElement Campaigns = driver.findElement(By.id("box-campaigns"));
         List<WebElement> ducksList = Campaigns.findElements(By.className("product"));
-
+        List<Product> products = new ArrayList<>();
 
         for (WebElement item : ducksList) {
 
@@ -109,7 +107,7 @@ public class CheckingProductCorrect {
         String[] values = TextColor.split(",");
         rgbColor.R = Integer.parseInt(values[0].trim());
         rgbColor.G = Integer.parseInt(values[1].trim());
-        rgbColor.B = Integer.parseInt(values[2].replace(")","").trim());
+        rgbColor.B = Integer.parseInt(values[2].trim());
         return rgbColor;
     }
 
