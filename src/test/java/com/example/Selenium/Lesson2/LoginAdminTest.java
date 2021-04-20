@@ -12,6 +12,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 import org.openqa.selenium.firefox.FirefoxOptions;
 import org.openqa.selenium.firefox.FirefoxBinary;
+
 import java.io.File;
 //import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -26,7 +27,7 @@ public class LoginAdminTest {
     private FirefoxOptions options;
 
     @Before
-     public void start() {
+    public void start() {
 
         //       driver = new ChromeDriver();
 //               driver = new FirefoxDriver();
@@ -43,7 +44,7 @@ public class LoginAdminTest {
     }
 
     @Test
-    public void loginAdmin(){
+    public void loginAdmin() {
         driver.get("http://localhost/litecart/admin/");
         driver.findElement(By.name("username")).sendKeys("admin");
         driver.findElement(By.name("password")).sendKeys("admin");

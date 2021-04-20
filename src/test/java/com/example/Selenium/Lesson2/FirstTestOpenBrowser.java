@@ -24,7 +24,7 @@ public class FirstTestOpenBrowser {
     @Before
     public void start() {
 
- //       driver = new ChromeDriver();
+        //       driver = new ChromeDriver();
 //        driver = new FirefoxDriver();
         System.setProperty("webdriver.edge.driver", "C:\\Java\\Tools\\msedgedriver.exe");
         driver = new EdgeDriver();
@@ -42,6 +42,7 @@ public class FirstTestOpenBrowser {
 
         wait.until(titleIs("webdriver - Bing"));
     }
+
     @After
 
     public void stop() {

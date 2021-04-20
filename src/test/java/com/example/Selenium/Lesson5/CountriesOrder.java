@@ -27,7 +27,7 @@ public class CountriesOrder {
     public void start() {
 
         //      driver = new FirefoxDriver();
-         driver = new ChromeDriver();
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
     }
 
@@ -48,16 +48,14 @@ public class CountriesOrder {
         List<String> countries = new ArrayList<>();
         List<String> hrefsWithZone = new ArrayList<>();
 
-        for(WebElement item : rows)
-        {
+        for (WebElement item : rows) {
             WebElement hrefElement = item.findElement(By.cssSelector("a[href]"));
             String countryName = hrefElement.getText();
             countries.add(countryName);
             WebElement parentHrefElement = hrefElement.findElement(By.xpath(".//parent::td"));
             WebElement zoneElement = parentHrefElement.findElement(By.xpath(".//following-sibling::td"));
             int zones = Integer.parseInt(zoneElement.getText());
-            if (zones > 0)
-            {
+            if (zones > 0) {
                 String hrefAttribute = hrefElement.getAttribute("href");
                 hrefsWithZone.add(hrefAttribute);
 //                System.out.println("Country: " + countryName + " Zones: " + zones);
@@ -68,8 +66,7 @@ public class CountriesOrder {
         boolean isSorted = Ordering.natural().isOrdered(countries);
         Assert.assertTrue("countries not sorted", isSorted);
 
-        for(String href : hrefsWithZone)
-        {
+        for (String href : hrefsWithZone) {
             driver.get(href);
             wait.until(titleIs("Edit Country | My Store"));
 

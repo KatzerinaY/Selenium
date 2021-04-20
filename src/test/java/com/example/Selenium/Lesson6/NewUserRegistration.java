@@ -24,14 +24,14 @@ public class NewUserRegistration {
     @Before
     public void start() {
 
-       // driver = new FirefoxDriver();
+        // driver = new FirefoxDriver();
 
-       // driver = new ChromeDriver();
+        // driver = new ChromeDriver();
 
         System.setProperty("webdriver.edge.driver", "C:\\Java\\Tools\\msedgedriver.exe");
         driver = new EdgeDriver();
 
-       wait = new WebDriverWait(driver, 10);
+        wait = new WebDriverWait(driver, 10);
     }
 
 
@@ -47,7 +47,7 @@ public class NewUserRegistration {
         WebElement accountForm = wait.until(visibilityOfElementLocated(By.id("create-account")));
 
         accountForm.findElement(By.name("company")).sendKeys("McDonald's");
-        accountForm.findElement(By.name("firstname")).sendKeys("Jim" );
+        accountForm.findElement(By.name("firstname")).sendKeys("Jim");
         accountForm.findElement(By.name("lastname")).sendKeys("Smith");
         accountForm.findElement(By.name("address1")).sendKeys("123 Avenue, 20");
         accountForm.findElement(By.name("address2")).sendKeys("Old-park-str, 8a");
@@ -55,7 +55,7 @@ public class NewUserRegistration {
         accountForm.findElement(By.name("city")).sendKeys("New-York");
         WebElement phone = accountForm.findElement(By.name("phone"));
         phone.sendKeys("+10555333696");
-        String textEmail = "Jm"+ System.currentTimeMillis() + "@m.com";
+        String textEmail = "Jm" + System.currentTimeMillis() + "@m.com";
         accountForm.findElement(By.name("email")).sendKeys(textEmail);
         String textPassword = "Jim999Smith";
         accountForm.findElement(By.name("password")).sendKeys(textPassword);

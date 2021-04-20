@@ -27,7 +27,7 @@ public class CheckingProductCorrect {
 
 //        driver = new FirefoxDriver();
 
-       driver = new ChromeDriver();
+        driver = new ChromeDriver();
 
 //        System.setProperty("webdriver.edge.driver", "C:\\Java\\Tools\\msedgedriver.exe");
 //        driver = new EdgeDriver();
@@ -58,7 +58,7 @@ public class CheckingProductCorrect {
             product.PromoPrice = promoPrice.getText();
 
             products.add(product);
-            CheckSizeColor(price,promoPrice);
+            CheckSizeColor(price, promoPrice);
 
         }
 
@@ -67,41 +67,41 @@ public class CheckingProductCorrect {
             WebElement item = wait.until(presenceOfElementLocated(By.id("box-product")));
 
             String prodName = item.findElement(By.className("title")).getText();
-            Assert.assertEquals("wrong product-name",prodName, product.Name);
+            Assert.assertEquals("wrong product-name", prodName, product.Name);
 
             WebElement price = item.findElement(By.className("regular-price"));
-            Assert.assertEquals("wrong regular-price",price.getText(), product.Price);
+            Assert.assertEquals("wrong regular-price", price.getText(), product.Price);
 
             WebElement promoPrice = item.findElement(By.className("campaign-price"));
-            Assert.assertEquals("wrong campaign-price",promoPrice.getText(), product.PromoPrice);
+            Assert.assertEquals("wrong campaign-price", promoPrice.getText(), product.PromoPrice);
 
-            CheckSizeColor(price,promoPrice);
+            CheckSizeColor(price, promoPrice);
 
         }
 
     }
 
 
-    void CheckSizeColor(WebElement price,WebElement promoPrice){
-        Double priceSize = Double.parseDouble(price.getCssValue("font-size").replace("px",""));
-        Double promoPriceSize = Double.parseDouble(promoPrice.getCssValue("font-size").replace("px",""));
-        Assert.assertTrue("wrong size",(priceSize < promoPriceSize));
+    void CheckSizeColor(WebElement price, WebElement promoPrice) {
+        Double priceSize = Double.parseDouble(price.getCssValue("font-size").replace("px", ""));
+        Double promoPriceSize = Double.parseDouble(promoPrice.getCssValue("font-size").replace("px", ""));
+        Assert.assertTrue("wrong size", (priceSize < promoPriceSize));
 
         RGB priceColor = ParseColor(price.getCssValue("color"));
-        Assert.assertEquals("regular-price not gray",priceColor.R, priceColor.G);
-        Assert.assertEquals("regular-price not gray",priceColor.B, priceColor.G);
+        Assert.assertEquals("regular-price not gray", priceColor.R, priceColor.G);
+        Assert.assertEquals("regular-price not gray", priceColor.B, priceColor.G);
 
         RGB promoPriceColor = ParseColor(promoPrice.getCssValue("color"));
         Assert.assertEquals("campaign-price not red", promoPriceColor.G, (Integer) 0);
         Assert.assertEquals("campaign-price not red", promoPriceColor.B, (Integer) 0);
 
         String BoldText = promoPrice.getCssValue("font-weight");
-        Assert.assertTrue("campaign-price not bold",BoldText.equals("bold") || (Integer.parseInt(BoldText)>= 700));
+        Assert.assertTrue("campaign-price not bold", BoldText.equals("bold") || (Integer.parseInt(BoldText) >= 700));
         String CrossText = price.getCssValue("text-decoration");
-        Assert.assertTrue("regular-price not crossed out",CrossText.contains("line-through"));
+        Assert.assertTrue("regular-price not crossed out", CrossText.contains("line-through"));
     }
 
-    RGB ParseColor(String TextColor){
+    RGB ParseColor(String TextColor) {
         RGB rgbColor = new RGB();
         TextColor = TextColor.replaceAll("[rgba()]", "");
         String[] values = TextColor.split(",");
@@ -117,7 +117,7 @@ public class CheckingProductCorrect {
         driver = null;
     }
 
-    private class RGB{
+    private class RGB {
         Integer R;
         Integer G;
         Integer B;

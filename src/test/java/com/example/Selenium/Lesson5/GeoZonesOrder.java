@@ -1,4 +1,5 @@
 package com.example.Selenium.Lesson5;
+
 import com.google.common.collect.Lists;
 import com.google.common.collect.Ordering;
 import org.junit.After;
@@ -26,7 +27,7 @@ public class GeoZonesOrder {
     public void start() {
 
 //         driver = new FirefoxDriver();
-       driver = new ChromeDriver();
+        driver = new ChromeDriver();
         wait = new WebDriverWait(driver, 10);
     }
 
@@ -42,28 +43,27 @@ public class GeoZonesOrder {
 
         List<WebElement> rows = driver.findElements(By.className("row"));
         List<String> hrefList = new ArrayList<>();
-        for(WebElement item : rows)
-        {
+        for (WebElement item : rows) {
             WebElement hrefElement = item.findElement(By.cssSelector("[href]"));
             hrefList.add(hrefElement.getAttribute("href"));
         }
 
 
-        for(String href : hrefList) {
+        for (String href : hrefList) {
 
             driver.get(href);
             wait.until(titleIs("Edit Geo Zone | My Store"));
 
             List<WebElement> rowsZone = driver.findElements(By.cssSelector("[name*=zone_code]"));
-            List<String> zonesList= new ArrayList<>();
+            List<String> zonesList = new ArrayList<>();
 
-            for (WebElement itemZ:rowsZone) {
+            for (WebElement itemZ : rowsZone) {
 
                 List<WebElement> SelectedItems = itemZ.findElements(By.cssSelector("[selected]"));
 
-                    for (WebElement SelectedItem:SelectedItems) {
-                        zonesList.add(SelectedItem.getText());
-                    }
+                for (WebElement SelectedItem : SelectedItems) {
+                    zonesList.add(SelectedItem.getText());
+                }
 
             }
 
@@ -78,7 +78,7 @@ public class GeoZonesOrder {
             Assert.assertTrue("zones not sorted", isSortedZ);
         }
 
-}
+    }
 
     @After
     public void stop() {
